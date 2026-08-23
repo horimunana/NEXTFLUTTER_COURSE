@@ -1,0 +1,8 @@
+https://api.escuelajs.co/api/v1/products/?categorySlug=electronics
+
+
+filter by 
+- electronics
+- clothes
+- forniture
+- 

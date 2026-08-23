@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:summer_shop/app.dart';
+import 'package:summer_shop/features/auth/presentation/login_page.dart';
+import 'package:summer_shop/utils/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'Summer Shop',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +34,9 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const App(),
+      // routerDelegate: routes.routerDelegate,
+      // routeInformationParser: routes.routeInformationParser,
+      routerConfig: routes,
     );
   }
 }

@@ -1,0 +1,23 @@
+[GET] https://api.escuelajs.co/api/v1/products
+
+The shape 
+ {
+    "id": 4,
+    "title": "Classic Grey Hooded Sweatshirtkjhgh",
+    "slug": "classic-grey-hooded-sweatshirtkjhgh",
+    "price": 90,
+    "description": "Elevate your casual wear with our Classic Grey Hooded Sweatshirt. Made from a soft cotton blend, this hoodie features a front kangaroo pocket, an adjustable drawstring hood, and ribbed cuffs for a snug fit. Perfect for those chilly evenings or lazy weekends, it pairs effortlessly with your favorite jeans or joggers.",
+    "category": {
+      "id": 1,
+      "name": "Toys baru lagi loh",
+      "slug": "toys-baru-lagi-loh",
+      "image": "https://placeimg.com/640/480/any",
+      "creationAt": "2026-08-21T06:52:48.000Z",
+      "updatedAt": "2026-08-21T10:48:05.000Z"
+    },
+    "images": [
+      "https://i.imgur.com/R2PN9Wq.jpeg"
+    ],
+    "creationAt": "2026-08-21T06:52:48.000Z",
+    "updatedAt": "2026-08-21T07:15:48.000Z"
+  },
