@@ -1,0 +1,176 @@
+{
+  "recipes": [
+    {
+      "id": "r1",
+      "name": "Margherita",
+      "category": "Classic",
+      "prepTime": 15,
+      "cookTime": 10,
+      "servings": 2,
+      "difficulty": 1,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-1.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Fresh basil", "Olive oil"],
+      "steps": [
+        "Spread tomato sauce over the dough.",
+        "Add slices of fresh mozzarella.",
+        "Drizzle with olive oil and bake at 250°C.",
+        "Top with fresh basil and serve hot."
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "r2",
+      "name": "Capricciosa",
+      "category": "Meat",
+      "prepTime": 20,
+      "cookTime": 12,
+      "servings": 2,
+      "difficulty": 2,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-2.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Ham", "Mushrooms", "Artichoke"],
+      "steps": [
+        "Layer tomato sauce on the base.",
+        "Add mozzarella, ham, mushrooms and artichokes.",
+        "Bake for 12 minutes at 250°C."
+      ],
+      "isFavorite": true
+    },
+    {
+      "id": "r3",
+      "name": "Prosciutto e Rucola",
+      "category": "Gourmet",
+      "prepTime": 18,
+      "cookTime": 11,
+      "servings": 2,
+      "difficulty": 2,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-4.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Prosciutto", "Arugula"],
+      "steps": [
+        "Bake a simple tomato and mozzarella base.",
+        "Top with prosciutto slices after baking.",
+        "Finish with fresh arugula and olive oil."
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "r4",
+      "name": "Diavola",
+      "category": "Spicy",
+      "prepTime": 15,
+      "cookTime": 12,
+      "servings": 3,
+      "difficulty": 2,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-5.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Spicy salami", "Chili flakes"],
+      "steps": [
+        "Spread tomato sauce and mozzarella.",
+        "Arrange spicy salami on top.",
+        "Sprinkle chili flakes and bake at 250°C."
+      ],
+      "isFavorite": true
+    },
+    {
+      "id": "r5",
+      "name": "Vegetale",
+      "category": "Vegetarian",
+      "prepTime": 22,
+      "cookTime": 13,
+      "servings": 4,
+      "difficulty": 2,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-6.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Bell peppers", "Onions", "Mushrooms"],
+      "steps": [
+        "Pre-roast the vegetables until tender.",
+        "Cover the base with sauce and mozzarella.",
+        "Add vegetables and bake until golden."
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "r6",
+      "name": "Pepperoni",
+      "category": "Meat",
+      "prepTime": 15,
+      "cookTime": 12,
+      "servings": 3,
+      "difficulty": 1,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-9.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Pepperoni"],
+      "steps": [
+        "Spread sauce and cheese over the dough.",
+        "Layer pepperoni slices evenly.",
+        "Bake at 250°C until crust is crispy."
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "r7",
+      "name": "Hawaiian",
+      "category": "Sweet",
+      "prepTime": 15,
+      "cookTime": 12,
+      "servings": 3,
+      "difficulty": 1,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-10.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Pineapple", "Ham"],
+      "steps": [
+        "Top dough with tomato sauce and mozzarella.",
+        "Add ham and pineapple chunks.",
+        "Bake until the cheese is bubbling."
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "r8",
+      "name": "Mediterranean",
+      "category": "Gourmet",
+      "prepTime": 20,
+      "cookTime": 13,
+      "servings": 3,
+      "difficulty": 3,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-12.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Sun-dried tomatoes", "Olives", "Artichoke"],
+      "steps": [
+        "Create the tomato base with mozzarella.",
+        "Scatter sun-dried tomatoes, olives and artichokes.",
+        "Bake and finish with a drizzle of olive oil."
+      ],
+      "isFavorite": true
+    },
+    {
+      "id": "r9",
+      "name": "Pesto Chicken",
+      "category": "Gourmet",
+      "prepTime": 25,
+      "cookTime": 15,
+      "servings": 4,
+      "difficulty": 3,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-15.jpg",
+      "ingredients": ["Pesto", "Mozzarella", "Chicken", "Sun-dried tomatoes", "Spinach"],
+      "steps": [
+        "Cook chicken breast and shred it.",
+        "Spread pesto as the base instead of tomato.",
+        "Add mozzarella, chicken and spinach.",
+        "Bake until the edges are golden."
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "r10",
+      "name": "Greek",
+      "category": "Vegetarian",
+      "prepTime": 20,
+      "cookTime": 13,
+      "servings": 3,
+      "difficulty": 2,
+      "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-13.jpg",
+      "ingredients": ["Tomato", "Mozzarella", "Spinach", "Feta", "Olives", "Pepperoncini"],
+      "steps": [
+        "Layer tomato sauce and mozzarella.",
+        "Add spinach, crumbled feta and olives.",
+        "Bake and top with pepperoncini before serving."
+      ],
+      "isFavorite": false
+    }
+  ]
+}
