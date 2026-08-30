@@ -1,0 +1,16 @@
+FAVORITES — LOCAL PERSISTENCE (no API)
+
+The favorites (wishlist) feature does NOT call any API.
+It is persisted locally using shared_preferences
+(storage key: "favorite_items" -> JSON array of ProductModel).
+
+State management:
+  lib/features/favorites/provider/favorites_provider.dart
+  FavoritesController extends Notifier<List<ProductModel>>  (NotifierProvider)
+
+Why local persistence?
+  - the fake API (Platzi) has no "wishlist" endpoint requirement here
+  - keeps the feature fully offline and instant
+
+If a real user system exists later, swap `_restore()`/`_persist()`
+for a call like PATCH /api/v1/users/{id} (not implemented).

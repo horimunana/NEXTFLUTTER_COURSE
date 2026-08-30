@@ -1,8 +1,18 @@
-https://api.escuelajs.co/api/v1/products/?categorySlug=electronics
+FILTERS / SORTING — client side, no extra API calls
 
+Server endpoint used only once to fetch the whole catalog:
+  GET https://api.escuelajs.co/api/v1/products
 
-filter by 
-- electronics
-- clothes
-- forniture
-- 
+Filtering and sorting are computed in the app with Riverpod:
+
+Providers
+  lib/features/filtrers/providers/filter_provider.dart
+    filterProvider -> FilterController (NotifierProvider<FilterModel>)
+    FilterModel fields: query (search text), category, sort (SortOption)
+
+  lib/features/filtrers/providers/filtered_products_provider.dart
+    categoriesProvider          -> AsyncValue<List<String>>
+    filteredProductsProvider    -> AsyncValue<List<ProductModel>>
+       maps productApiProvider + filterProvider with AsyncValue.whenData
+
+SortOption enum: none | priceAsc | priceDesc | titleAsc

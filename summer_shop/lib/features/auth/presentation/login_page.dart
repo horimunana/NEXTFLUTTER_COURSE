@@ -1,115 +1,115 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:summer_shop/features/auth/provider/auth_provider.dart';
 import 'package:summer_shop/utils/theme.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final formKey = GlobalKey<FormState>();
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final auth = ref.watch(authProvider);
 
-class _LoginPageState extends State<LoginPage> {
-  final formkey = GlobalKey<FormState>();
-  String? email;
-  String? password;
-  @override
-  Widget build(BuildContext context) {
+    // Navigate home as soon as login succeeds.
+    useEffect(() {
+      if (auth.isAuthenticated) {
+        context.go('/');
+      }
+      return null;
+    }, [auth.isAuthenticated]);
+
+    Future<void> submit() async {
+      if (!formKey.currentState!.validate()) return;
+      await ref.read(authProvider.notifier).login(
+            email: emailController.text.trim(),
+            password: passwordController.text,
+          );
+    }
+
     return Scaffold(
-      body: Form(
-        key: formkey,
+      body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
-          child: Column(
-            mainAxisAlignment: .center,
-            crossAxisAlignment: .start,
-            spacing: 4,
-            children: [
-              // Text(
-              //   "Here to Get ",
-
-              //   style: TextStyle(fontSize: 32, fontWeight: .bold),
-              // ),
-              Text(
-                "Welcomed Back",
-
-                style: TextStyle(fontSize: 32, fontWeight: .bold),
-              ),
-              SizedBox(height: 24),
-              // TextFormField(
-              //   initialValue: username,
-              //   keyboardType: TextInputType.name,
-              //   decoration: InputDecoration(
-              //     border: OutlineInputBorder(),
-              //     labelText: "Enter username",
-              //   ),
-              //   validator: (value) {
-              //     if (value!.isEmpty) {
-              //       return "Username is required";
-              //     }
-              //     return null;
-              //   },
-              //   onSaved: (value) => username = value,
-              // ),
-              // SizedBox(height: 8),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Enter email",
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Email is required";
-                  }
-                  return null;
-                },
-                onSaved: (value) => email = value,
-              ),
-              SizedBox(height: 8),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Enter password",
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Password is required";
-                  }
-                  return null;
-                },
-                onSaved: (value) => password = value,
-              ),
-              SizedBox(height: 4),
-              Row(
-                mainAxisAlignment: .center,
-                children: [
-                  Text(
-                    "Don't you have an account? Sign Up",
-                    textAlign: TextAlign.center,
-
-                    style: TextStyle(color: Colors.blue),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Welcome back',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: ThemeColor.text,
                   ),
-                ],
-              ),
-              SizedBox(height: 12),
-              InkWell(
-                onTap: () {
-                  if (formkey.currentState!.validate()) {
-                    formkey.currentState!.save();
-                    debugPrint("$email, $password");
-                  }
-                },
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 12),
-                  color: ThemeColor.primary,
-                  child: Text("Sign In", textAlign: TextAlign.center),
                 ),
-              ),
-              // ElevatedButton(onPressed: () {}, child: Text("Login")),
-            ],
+                const SizedBox(height: 6),
+                const Text(
+                  'Sign in to continue shopping',
+                  style: TextStyle(color: ThemeColor.grayText),
+                ),
+                const SizedBox(height: 28),
+                TextFormField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    hintText: 'Email',
+                    prefixIcon: Icon(Icons.mail_outline),
+                  ),
+                  validator: (value) => value == null || value.isEmpty
+                      ? 'Email is required'
+                      : null,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Password',
+                    prefixIcon: Icon(Icons.lock_outline),
+                  ),
+                  validator: (value) => value == null || value.isEmpty
+                      ? 'Password is required'
+                      : null,
+                ),
+                const SizedBox(height: 20),
+                FilledButton(
+                  onPressed: auth.isLoading ? null : submit,
+                  child: auth.isLoading
+                      ? const SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                      : const Text('Sign In'),
+                ),
+                TextButton(
+                  onPressed: () => context.goNamed('register'),
+                  child: const Text(
+                    "Don't have an account? Register",
+                    style: TextStyle(color: ThemeColor.primary),
+                  ),
+                ),
+                if (auth.error != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      auth.error!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.redAccent),
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),

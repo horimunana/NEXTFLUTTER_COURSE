@@ -1,4 +1,9 @@
+Fake API endpoints used by the auth feature
+Base URL: https://api.escuelajs.co  (Platzi Fake Store API)
 
+---------------------------------------------
+
+LOGIN
 POST https://api.escuelajs.co/api/v1/auth/login
 Content-Type: application/json
 
@@ -8,8 +13,25 @@ Content-Type: application/json
 }
 
 result
-
 {
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY3Mjc2NjAyOCwiZXhwIjoxNjc0NDk0MDI4fQ.kCak9sLJr74frSRVQp0_27BY4iBCgQSmoT3vQVWKzJg",
-  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY3Mjc2NjAyOCwiZXhwIjoxNjcyODAyMDI4fQ.P1_rB3hJ5afwiG4TWXLq6jOAcVJkvQZ2Z-ZZOnQ1dZw"
+  "access_token": "eyJhbGciOiJIUzI1NiIs...",
+  "refresh_token": "eyJhbGciOiJIUzI1NiIs..."
 }
+
+---------------------------------------------
+
+REGISTER (create account)
+POST https://api.escuelajs.co/api/v1/users/
+{
+  "name": "Nicolas",
+  "email": "nico@gmail.com",
+  "password": "1234",
+  "avatar": "https://picsum.photos/800"
+}
+
+---------------------------------------------
+
+Demo credentials: john@mail.com / changeme
+
+Note: the access token is stored locally with shared_preferences
+(authProvider -> AuthController, a NotifierProvider).

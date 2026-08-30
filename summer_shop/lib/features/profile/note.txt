@@ -1,20 +1,19 @@
-GET https://api.escuelajs.co/api/v1/auth/profile
-Authorization: Bearer {your_access_token}
+PROFILE — MOCK DATA (no API)
 
-The result
+The profile screen intentionally uses MOCK data, no network request.
 
-{
-  "id": 1,
-  "email": "john@mail.com",
-  "password": "changeme",
-  "name": "Jhon",
-  "role": "customer",
-  "avatar": "https://api.lorem.space/image/face?w=640&h=480&r=867"
-}
+Where is it defined?
+  lib/features/profile/models/profile_model.dart   (data model)
+  lib/features/profile/provider/profile_provider.dart (Riverpod Provider)
 
-POST https://api.escuelajs.co/api/v1/auth/refresh-token
-Content-Type: application/json
+Example mock payload (hard-coded):
+  {
+    "name": "Munana Hori",
+    "email": "munana.hori@example.com",
+    "avatarUrl": "https://i.pravatar.cc/300?img=12",
+    "location": "Bujumbura, Burundi",
+    "memberSince": "January 2024"
+  }
 
-{
-  "refreshToken": "{your_refresh_token}"
-}
+Extra numbers shown on the screen (Favorites / In cart / Orders) are
+derived live from the favoritesProvider and cartProvider.

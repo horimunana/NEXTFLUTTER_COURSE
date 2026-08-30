@@ -7,49 +7,70 @@ import 'package:summer_shop/features/home/presentation/cart_page.dart';
 import 'package:summer_shop/features/home/presentation/detail_page.dart';
 import 'package:summer_shop/features/home/presentation/home_page.dart';
 import 'package:summer_shop/features/profile/presentation/profile_page.dart';
+import 'package:summer_shop/utils/main_shell.dart';
 
 final GoRouter routes = GoRouter(
-  initialLocation: "/",
+  initialLocation: '/',
   routes: <RouteBase>[
     GoRoute(
-      name: "login",
-      path: "/login",
+      name: 'login',
+      path: '/login',
       builder: (context, state) => const LoginPage(),
     ),
     GoRoute(
-      name: "register",
-      path: "/register",
+      name: 'register',
+      path: '/register',
       builder: (context, state) => const RegisterPage(),
     ),
     GoRoute(
-      name: "home",
-      path: "/",
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      name: "detail",
-      path: "/detail/:id",
+      name: 'detail',
+      path: '/detail/:id',
       builder: (context, state) => const DetailPage(),
     ),
     GoRoute(
-      name: "profile",
-      path: "/profile",
-      builder: (context, state) => const ProfilePage(),
-    ),
-    GoRoute(
-      name: "cart",
-      path: "/cart",
+      name: 'cart',
+      path: '/cart',
       builder: (context, state) => const CartPage(),
     ),
     GoRoute(
-      name: "favorite",
-      path: "/favorite",
-      builder: (context, state) => const FavoritePage(),
-    ),
-    GoRoute(
-      name: "search",
-      path: "/search",
+      name: 'search',
+      path: '/search',
       builder: (context, state) => const SearchPage(),
+    ),
+    // Bottom-navigation shell with the three main tabs.
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainShell(navigationShell: navigationShell);
+      },
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: 'home',
+              path: '/',
+              builder: (context, state) => const HomePage(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: 'favorites',
+              path: '/favorites',
+              builder: (context, state) => const FavoritePage(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: 'profile',
+              path: '/profile',
+              builder: (context, state) => const ProfilePage(),
+            ),
+          ],
+        ),
+      ],
     ),
   ],
 );

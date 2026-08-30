@@ -1,23 +1,33 @@
 [GET] https://api.escuelajs.co/api/v1/products
+(base fake API: https://api.escuelajs.co — Platzi Fake Store API)
 
-The shape 
- {
-    "id": 4,
-    "title": "Classic Grey Hooded Sweatshirtkjhgh",
-    "slug": "classic-grey-hooded-sweatshirtkjhgh",
-    "price": 90,
-    "description": "Elevate your casual wear with our Classic Grey Hooded Sweatshirt. Made from a soft cotton blend, this hoodie features a front kangaroo pocket, an adjustable drawstring hood, and ribbed cuffs for a snug fit. Perfect for those chilly evenings or lazy weekends, it pairs effortlessly with your favorite jeans or joggers.",
+The catalog response shape
+  {
+    "id": 2,
+    "title": "Classic Red Pullover Hoodie",
+    "slug": "classic-red-pullover-hoodie",
+    "price": 10,
+    "description": "Elevate your casual wardrobe...",
     "category": {
       "id": 1,
-      "name": "Toys baru lagi loh",
-      "slug": "toys-baru-lagi-loh",
-      "image": "https://placeimg.com/640/480/any",
-      "creationAt": "2026-08-21T06:52:48.000Z",
-      "updatedAt": "2026-08-21T10:48:05.000Z"
+      "name": "Clothes",
+      "slug": "clothes",
+      "image": "https://i.imgur.com/QkIa5tT.jpeg"
     },
     "images": [
-      "https://i.imgur.com/R2PN9Wq.jpeg"
+      "https://i.imgur.com/1twoaDy.jpeg",
+      "https://i.imgur.com/FDwQgLy.jpeg",
+      "https://i.imgur.com/kg1ZhhH.jpeg"
     ],
-    "creationAt": "2026-08-21T06:52:48.000Z",
-    "updatedAt": "2026-08-21T07:15:48.000Z"
-  },
+    "creationAt": "2026-08-24T07:54:38.000Z",
+    "updatedAt": "2026-08-24T07:54:38.000Z"
+  }
+
+Single product
+[GET] https://api.escuelajs.co/api/v1/products/{id}
+
+Filtering / sorting in this app is done CLIENT-SIDE with Riverpod:
+  - the whole list is fetched once (FutureProvider)
+  - a FilterController (NotifierProvider) holds query / category / sort
+  - filteredProductsProvider derives the result list
+  (No server-side filter calls needed.)
